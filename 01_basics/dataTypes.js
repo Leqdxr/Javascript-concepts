@@ -41,3 +41,7 @@ BigInt
 
 All of them are primitive data types. "null" is a primitive data type as well even though typeof null may return "Object"
 */
+
+console.log(typeof(userAge)); // typeof can also be used like this by using parenthesis
+let testingUndefined;
+console.log(typeof(testingUndefined)); // This would output "undefined". "undefined" is a special type by itself but null is object type.
