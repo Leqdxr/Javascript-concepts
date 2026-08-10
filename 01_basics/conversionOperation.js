@@ -56,3 +56,72 @@ If it had an actual numeric value such as 123 or 12.03 then it would be converte
 
 If we were converting undefined type into a number, then it would be the same case, we would get "NaN" but it would be converted into a number 
 */
+
+
+// --------------------- Operation -------------------------
+
+let number1 = 5;
+let number2 = 4;
+console.log(number1+number2); // This is used for addition, output: 9
+console.log(number1-number2); // This is used for subtraction, output: 1
+console.log(number1/number2); // This is used for division, output: 1.25
+console.log(number1*number2); // This is used for multiplication, output: 20
+console.log(number1%number2); // This is used for remainder, output: 1
+console.log(number1**number2); // This is for exponentiation, It basically adds something to power of something. output: 625
+// For example, 2**2 would be 4 because its 2^2 = 4. Likewise, 2**3 would be 8 because its just 2^3.
+
+// We can also add two strings together
+
+let string1 = "Aagaman";
+let string2 = "Leqdxr";
+console.log(string1+ " " +string2); // " " is for adding a whitespace between them, without it we would get AagamanLeqdxr
+// Output: Aagaman Leqdxr
+
+console.log("1" + 2);
+console.log(1 + "2");
+
+/*
+Both of the code above would return "12". Because, if there is a case where either of the operands is a string
+then, javascript converts the other value into a string and performs string concatenation. This is when we are dealing with
+two operands.
+*/
+
+// Let's look a different case now.
+console.log("1" + 2 + 2); // Output: 122
+console.log(1 + 2 + "2"); // Output: 32
+console.log(1+"2"+2); // Output: 122
+/*
+Javascript evaluates the code from left to right, here we are trying to perform operation on 3 operands. 1 is a string
+and 2 are numbers.
+
+In line number 90, we can see we first used a string. So javascript converts the other values into a string and concatenates them
+However, in line 91, we are getting 32 because we used 2 numbers at first. So those are added. Then we would have 3 + "2"
+So, in this case 3 is converted to a string and string concatenation is performed giving us "32"
+
+Similar logic applies to line 92 giving us 122 as well.
+
+If we check their type using typeof(), we would get string.
+*/
+
+console.log(+true); // Output: 1
+console.log(+"helloooo"); // Output: NaN
+console.log(+""); // Output: 0
+
+// + in this case is a unary operator, it converts something into a number.
+
+
+let x = 2;
+let y = x++;
+console.log(x,y);
+/* 
+This would return 3 2.
+Here, on line 114 we used post-increment operator.
+Basically, Post-increment = use first, increment later
+           Pre-increment = increment first, use later
+
+Since we used postfix, the value of x (which is 2) was stored in y variable, then finally the value of x was increased
+so by the time we console log, the value of x would be 3 and value of y would be 2.
+
+If we used pre-increment instead, such that let y = ++x, the value of x would be increased and stored in y. So y = 3.
+Then the output would've been 3 3.
+*/
