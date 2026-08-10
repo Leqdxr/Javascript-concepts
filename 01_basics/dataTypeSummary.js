@@ -1,3 +1,5 @@
+// Javascript is a dynamically typed language.
+
 /*
  Data is categorized into two types based on how it is stored in the memory and how it is accessed.
  Primitive and Non primitive data types (or reference types)
@@ -52,8 +54,6 @@
   x2.name = {name : "Tony Stark"}; // the name property is replaced with new object
   console.log(x2); // { name: { name: 'Tony Stark' } }
   console.log(x1); // { name: { name: 'Tony Stark' } } // Since they were both referring to same object.
-  
- // Javascript is a dynamically typed language.
 
 const myArray = ["Miles morales", "Spider Gwen", "Spiderman Noir", "Peter Parker"]; // This is how you define an array
 
