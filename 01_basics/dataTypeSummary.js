@@ -82,3 +82,6 @@ console.log(typeof undefinedVariable); // undefined
 console.log(typeof myArray); // object
 console.log(typeof myObj); // object
 console.log(typeof myFunction); // function
+
+
+// Stack memory (Primitive Types), Heap memory (Non-primitive types)
