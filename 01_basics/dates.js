@@ -16,7 +16,11 @@ console.log(myDate.toISOString()); // It shows the current date in ISO 8601 form
 // For example, right now its showing me 2026-08-13T:14:51:38.732Z
 
 console.log(myDate.toJSON()); // It also shows the current date in ISO 8601 string format like .toISOString() above
-// You rarely call this one directly, JSON.Stringify() calls this automatically when converting a date to JSON
+/*
+You rarely call this one directly like we did here.
+In real code, JSON.stringify() calls .toJSON() automatically whenever it 
+needs to convert a Date object into a string (since JSON has no native "Date" type)
+*/
 
 // Let's say you write an invalid date and time
 
