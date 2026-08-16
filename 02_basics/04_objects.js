@@ -150,3 +150,55 @@ output:
 
 console.log(guestUser.hasOwnProperty('phone')); // true
 console.log(guestUser.hasOwnProperty('Phone')); // false
+
+// ================================= De-structuring and JSON ===============================
+
+const course = {
+    courseName: "100 days of Python",
+    courseInstructor: "Angela Yu",
+    coursePrice: 9.99
+}
+
+// Let's say we want to use courseInstructor inside of course object a lot of times in our code.
+// It will be unnecessarily complex if we start using it through dot or square/bracket notation everytime
+// Here, we can use the concept of destructuring
+
+const {courseInstructor} = course; // Now we can use "courseInstructor" without having to worry about dot notation
+// It extracts the property into a variable so you can refer to that variable directly
+console.log(courseInstructor);
+
+// If we'd like, we can assign a different variable for it as well. Let's assign one to courseName
+
+const {courseName: nameCourse} = course; // Now if we log nameCourse
+console.log(nameCourse); // 100 days of python
+
+
+console.log(course.courseName); // This would still work
+console.log(course.nameCourse); // However, this would print undefined. Because it doesn't really change anything about the actual course object
+
+// JSON
+
+// JSON stands for JavaScript Object Notation. It is a plain text/data format but not actually an object.
+// JSON object property names must be in double quotes (unlike objects where it is more forgiving in that case)
+// You can't have undefined values
+// You can't have any comments
+// You can't have any functions, trailing commas. It's just a plain text/data format.
+// For example, our regularUser object above is a valid javascript object but invalid JSON.
+
+// {
+//     "name":"Aagaman",
+//     "age": 20,
+//     "isLoggedIn": true,
+//     "occupation": "student"
+// } // This is an example of a valid JSON. This looks similar to object, but they are not the same
+// // APIs commonly return data in JSON format
+
+// // We may also in some cases obtain APIs in format of Arrays, which will look like this
+
+// [
+//     {},
+//     {},
+//     {}
+// ]
+
+// Useful link https://jsonformatter.org/
