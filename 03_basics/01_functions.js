@@ -48,5 +48,5 @@ function greetUser(username) {
     return `Hello ${username}, welcome to the app`;
 }
 
-console.log(greetUser("Aagaman"));
+console.log(greetUser("Aagaman")); // This will print Hello Aagaman, welcome to the app
 console.log(greetUser()); // Return with no value becomes undefined, so we get "Your username can NOT be empty" "undefined"
