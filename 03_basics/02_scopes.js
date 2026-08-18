@@ -47,7 +47,7 @@ if(true) {
 // console.log(a); // This would throw an error because a is block scoped and doesn't exist globally
 // console.log(b); // This would also throw an error due to same reasons as line 15
 console.log(c); // output: 30, This is because var is function scoped, not block scoped.
-// Since if block is not a function, it can be accessed anywhere outside if block
+// Since var is NOT block scoped, a variable declared inside a block using var can be accessed anywhere
 // The reason why we get 30 instead of 300 is because the variable was redeclared inside if statement.
 
 let num1 = 20;
