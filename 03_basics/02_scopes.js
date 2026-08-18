@@ -72,10 +72,10 @@ function letConst() {
     if (true) {
         let a = 20;
         const b = 30;
-        console.log("Inner ", a); // Inner 20
+        console.log("Inner", a); // Inner 20
         console.log(b);
      }
-    console.log("Outer ", a); // Outer 10 because that was the value defined outside the if block
+    console.log("Outer", a); // Outer 10 because that was the value defined outside the if block
     // console.log(b); // b is not defined error because it exists within the above if statement only
 }
 
@@ -95,3 +95,55 @@ function varTalk() {
 
 varTalk();
 // console.log(num3); // num3 is not defined error since it can only exists in a function
+
+
+// Let's say we have a nested function, let's analyse how scope works on that function
+
+function one() {
+    const name = "aagaman";
+    function two() {
+        console.log(name); // It can access the name variable defined in outer function
+        const age = 20;
+        console.log(`${name} is ${age} years old`);
+    }
+    two();
+    console.log("Outer", name);
+    // console.log(age); // This would throw an error because we can't access the age variable as it was defined in a nested function two()
+}
+
+one();
+
+// Let's say we have a nested if statements, let's analyse how scope works on those if blocks
+
+if (true) {
+    const name = "aagaman";
+    if(name==="aagaman") {
+        console.log(name); // The nested if can access name variable defined in outer if statement
+        const age = 20;
+        console.log(`${name} is ${age} years old`);
+    }
+    console.log(name);
+    // console.log(age); // This would throw an error as it can't access the age variable defined in inner if statement
+}
+
+// console.log(name); // This would throw an error because it is not a global variable
+// console.log(age); // This would throw an error because it is not a global variable
+
+
+// ================================= Interesting Scenario =========================
+
+console.log(multiplyTwo(2));
+// This would output 4, because the function declaration is hoisted.
+// Hoisting is a behaviour in javascript where declarations are processed before executing the code in that scope
+// So, function declarations can be called before their declaration because function declaration is hoisted
+function multiplyTwo(num) {
+    return num*2;
+}
+
+console.log(divideTwo(2));
+// Although divideTwo is hoisted as well, we have declared it using const keyword assigning it as function expression
+// When it comes to let and const, variables cannot be accessed before initialization
+// The declaration IS processed during hoisting, but the function is not assigned to divideTwo until the below line is reached during normal execution
+const divideTwo = function(num) {
+    return num/2;
+}
