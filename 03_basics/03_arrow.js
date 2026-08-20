@@ -44,3 +44,68 @@ function aagaman() {
 }
 
 aagaman();
+
+
+// arrow function
+
+
+const someFunction = function() {
+    const username = "Aagaman";
+    console.log(this.username); // undefined
+    console.log(this); // this will return node's global objects as someFunction() is called as plain function call
+}
+
+someFunction();
+
+const arrowFunction = () => {
+    const username = "Aagaman";
+    console.log(this); 
+    // on node environment, it would print {}. This is because arrow functions borrow "this" from their enclosing scope
+    // in this case, it is module.exports = {}
+    // in CommonJs Node.js module top level "this" is module.exports which initially is {}
+    console.log(this.username); // undefined
+}
+
+arrowFunction();
+
+// console.log(((num1,num2) => {
+//     return num1+num2;
+// }) (2,3)); // output - 5
+
+const addNumbers = (num1,num2) => {
+    return num1+num2;
+}
+
+console.log(addNumbers(3,4)); // 7
+
+// This is called explicit return, we are writing return explicitly.
+// There is implicit return as well where we don't have to write "return" keyword when using arrow functions
+
+const subNumbers = (num1,num2) => num1-num2;
+console.log(subNumbers(5,3)); // 2
+
+// We can wrap it around parenthesis as well
+const subNumbers2 = (num1,num2) => (num1-num2);
+console.log(subNumbers2(5,3));
+
+// We can return an object as well
+
+const forObject = () => {username: "Aagaman"};
+console.log(forObject()); // This would give us undefined. Because without parenthesis javascript wont know if it is a object literal or start of function body block
+// JS always assumes by default that it is a function body block
+const forObject2 = () => ({username: "Aagaman"});
+console.log(forObject2()); // { username: 'Aagaman' }
+
+// IMPORTANT NOTE: If you write curly braces {} you must explicitly write return
+
+const divideFunction = (num1,num2) => {
+    num1/num2;
+}
+
+console.log(divideFunction(4,2)); // This will give undefined, because its not returning anything
+
+const divideFunction2 = (num1,num2) => (
+    num1/num2
+);
+
+console.log(divideFunction2(4,2)); // This wouldn't return undefined, this would give us 2.
