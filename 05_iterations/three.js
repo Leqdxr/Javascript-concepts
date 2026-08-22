@@ -34,7 +34,7 @@ map.set("ID",2400000)
 map.set("Phone", 9213824213)
 map.set("Country","Nepal")
 console.log(map); // Map(3) { 'ID' => 2400000, 'Phone' => 9213824213, 'Country' => 'Nepal' }
-// maps can't have duplicate values, so if we try to insert country again
+// maps can't have duplicate keys, so if we try to insert country again
 map.set("Country","Nepal")
 console.log(map); // Map(3) { 'ID' => 2400000, 'Phone' => 9213824213, 'Country' => 'Nepal' } (same output as above)
 // it will not be inserted
