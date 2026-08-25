@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .bg-color {
+            background-color: #232a2d;
+            color: #dadada;
+        }
+    </style>
+</head>
+<body class = "bg-color">
+    <div class="parent">
+        <div class="days">Monday</div>
+        <div class="days">Tuesday</div>
+        <div class="days">Wendesday</div>
+        <div class="days">Thursday</div>
+        <div class="days">Friday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent')
+    console.log(parent);
+    console.log(parent.children); // this will print all children of the "parent" class as HTML Collection
+    console.log(parent.children[0].innerHTML); // we can use index to access specific child and can use other properties on them as well
+    // for example innerHTML as shown
+    // Monday
+    for(let i = 0; i<parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML);
+    }
+
+    console.log(parent.firstElementChild) // This will display the first child of the "parent" class which in this case is Monday
+    console.log(parent.lastElementChild) // This will display the last child of the "parent" class which in this case is Friday
+
+
+    const dayOne = document.querySelector('.days')
+    console.log(dayOne);
+    console.log(dayOne.parentElement); // This will return the parent element of first element of "days" class
+    console.log(dayOne.nextElementSibling); // This will return the next sibling of first element of "days" class (Tuesday)
+    console.log(dayOne.previousElementSibling); // This will return the previous sibling of first element of "days" class (Null since there is no element before Monday)
+
+    console.log("Nodes: ", parent.childNodes); // This will return a node list that includes text nodes in addition to element nodes unlike "children" property
+    // NodeLists containing 11 nodes because we have 5 element nodes and 6 text nodes due to line breaks
+</script>
+</html>
