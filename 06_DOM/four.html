@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .bg-color {
+            background-color: #232a2d;
+            color: #dadada
+        }
+    </style>
+</head>
+<body class = "bg-color">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    const addLanguage = (langName) => {
+        const ul = document.querySelector('.language')
+        const newLi = document.createElement('li')
+        const textNode = document.createTextNode(langName)
+        newLi.appendChild(textNode)
+        ul.appendChild(newLi)
+    }
+
+    addLanguage("python")
+    addLanguage("TypeScript")
+    addLanguage("Java")
+    addLanguage("GoLang")
+
+    // Edit
+    // lets say i want to edit "python" to "C++"
+    // python is li's 2nd element so i could use li:nth-child(2) to access it
+
+    const secondElement = document.querySelector("li:nth-child(2)")
+    // secondElement.innerHTML = 'C++' // this would work fine too
+    const newLi = document.createElement('li')
+    newLi.appendChild(document.createTextNode('C++'))
+
+    secondElement.replaceWith(newLi)
+
+    // another way to edit, lets say i want to edit JavaScript to Kotlin
+    // javascript is first element in li, so i could use li:first-child to access it
+
+    const firstElement = document.querySelector('li:first-child')
+    firstElement.outerHTML = '<li> Kotlin </li>'
+
+
+
+    // to remove elements
+    // lets say i want to remove GoLang which is last element in li and can be accessed via li:last-child
+
+    const lastElement = document.querySelector('li:last-child')
+    lastElement.remove()
+
+</script>
+</html>
