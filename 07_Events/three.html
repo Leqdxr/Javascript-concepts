@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <h1>Aagaman</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+const start = document.querySelector('#start');
+const stop = document.querySelector('#stop');
+
+let intervalId;
+const changeColor = () => {
+  if (!intervalId) {
+    intervalId = setInterval(changeBgColor, 1000);
+  }
+  function changeBgColor() {
+    const randomNumber = Math.floor(100000 + Math.random() * 900000);
+    document.body.style.backgroundColor = `#${randomNumber}`;
+  }
+};
+
+start.addEventListener('click', () => {
+  clearInterval(intervalId);
+  changeColor();
+});
+
+stop.addEventListener('click', () => {
+  clearInterval(intervalId);
+  intervalId = null;
+});
+</script>
+</html>
