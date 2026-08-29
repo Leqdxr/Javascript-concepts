@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR</title>
+</head>
+<body style="background-color: #212121; color:aliceblue">
+    <pre>
+    XMLHttpRequest (XHR) is a javascript tool that allows our webpage to talk to a server without refreshing the page.
+
+    Your website -> Asks server for data -> server sends data back -> javascript can use that data
+
+    for example, lets say we have a button called "Get user", when we click on it, our website asks the server
+    to give us the data from user123, the server will send the data back in json format and our javascript can use it.
+
+    XMLHttpRequest.readyState returns the current state XMLHttpRequest is in, 0 to 4.
+    0 = unsent - client created, but open() not yet called
+    1 = opened - open() has been called
+    2 = headers recieved - send() has been called, headers and status are available
+    3 = loading - Downloading, responseText holds partial data
+    4 = done - complete
+
+    open() will initialize the request, but won't send it yet. It will configure things
+    open(method, url, async) (where async is boolean and default value is true)
+    open() will move readyState from 0 to 1
+
+    send() will send the request you configured with open, send(body). For get method no body is needed
+    without send() request never actually happens, no matter what you passed to open.
+    it moves readyState from 2, 3 and eventually 4.
+    </pre>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/leqdxr'
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET',requestUrl)
+    xhr.onreadystatechange = function() { // When the state changes, execute this function
+        // console.log(xhr.readyState); 2,3,4
+        if(xhr.readyState===4) { // 4 = done
+            const data = JSON.parse(this.responseText) // We would've gotten response text as string, so we parsed it to json
+            console.log(data.followers); // This will give us followers from "Leqdxr"'s github
+        }
+    }
+    xhr.send()
+</script>
+</html> 
