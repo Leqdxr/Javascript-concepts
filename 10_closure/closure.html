@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Scope and Closure</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+
+// Lexical scoping basically means that the child functions are able to access parent scope and variables defined within it
+    function outerFunction() {
+        let parentVariable = 10;
+        function innerFunction() {
+            parentVariable++
+            console.log(parentVariable);
+        }
+        innerFunction()
+    }
+    outerFunction() // 11
+
+// Closure on the other hand is a function that has access to parent scope even after the parent function has been closed
+    function myFunction() {
+        const a = 20
+        function displayVariable() {
+            console.log(a);
+        }
+        return displayVariable
+    }
+
+    // The returned value is stored in result
+    const result = myFunction()
+    // What happens is, when we return the displayVariable function and myFunction closes, displayVariable carries it's parent's lexical 
+    // scope even after myFunction has stopped executing
+    result() // 20
+</script>
+<script>
+    // document.getElementById('orange').onclick = function(){
+    //     document.body.style.backgroundColor = 'orange'
+    // }
+
+    // document.getElementById('green').onclick = function(){
+    //     document.body.style.backgroundColor = 'green'
+    // }
+
+
+    // Real world example of closure
+    function clickHandler(color) {
+
+        // we returned the function inside of "clickHandler" which will remember the color to be applied in body through closure
+        // so whenever the button is clicked, correct color is applied
+        // clickHandler(color) is run as soon as the page loads, but doesn't apply the color immediately since we returned the function
+        // the returned function still has access to color later when button is actually clicked
+        return function() {
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+</script>
+</html>
